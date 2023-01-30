@@ -7,15 +7,17 @@ const rotator = (arr: number[], k: number): string | number[] => {
     return [];
   }
 
-  let currentElement: number = 0;
+  let currentElement: number | undefined = 0;
   const arrLength: number = arr.length;
   k = k % arrLength;
 
   let i: number;
 
   for (i = 0; i < k; i++) {
-    currentElement = arr.pop();
-    arr.unshift(currentElement);
+      currentElement = arr.pop();
+      if (currentElement) {
+        arr.unshift(currentElement);
+      }
   }
 
   return arr;
